@@ -1,10 +1,7 @@
-export default function fetchCountries(searchQuery) {
-  fetch(
-    `https://restcountries.com/v3.1/name/${searchQuery}?fields=name,capital,population,flags.svg,languages`,
-  ).then(response => {
-    if (!response.ok) {
-      Notiflix.Notify.failure('Oops, there is no country with that name.');
-    }
-    response.json();
-  });
+const BASE_URL = 'https://restcountries.com/v3.1/';
+
+function fetchCountries(searchQuery) {
+  return fetch(`${BASE_URL}/name/${searchQuery}`).then(response => response.json());
 }
+
+export default { fetchCountries };
